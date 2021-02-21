@@ -9,7 +9,7 @@ using namespace std;
 
 class UserManager {
 
-    int loggeInUserId;
+    int loggedInUserId;
     vector <User> users;
     UserFile userFile;
 
@@ -20,7 +20,7 @@ class UserManager {
 public:
 
     UserManager (string userFileName) : userFile (userFileName) {
-        loggeInUserId = 0;
+        loggedInUserId = 0;
         users = userFile.loadUsersFromFile();
     };
 

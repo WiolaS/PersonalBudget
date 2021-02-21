@@ -43,7 +43,7 @@ User UserManager::enterNewUserData() {
 }
 
 int UserManager::getIdOfNewUser() {
-    if (users.empty() == true)
+    if (users.empty())
         return 1;
     else
         return users.back().getUserId() + 1;
@@ -59,7 +59,6 @@ void UserManager::registerUser() {
 }
 
 int UserManager::login() {
-    //User user;
     string login = "", password = "";
 
     cout << endl << "Please enter your login: ";
@@ -73,10 +72,10 @@ int UserManager::login() {
                 password = AuxiliaryMethods::loadLine();
 
                 if (users[i].getPassword() == password) {
-                    loggeInUserId = users[i].getUserId();
+                    loggedInUserId = users[i].getUserId();
                     cout << endl << "Hello "<< users[i].getName() << "! You are logged in." << endl << endl;
 
-                    return loggeInUserId;
+                    return loggedInUserId;
                 }
             }
             cout << "You entered the password 3 times incorrectly." << endl;
@@ -94,7 +93,7 @@ void UserManager::changePasswordOfLoggedInUser() {
     newPassword = AuxiliaryMethods::loadLine();
 
     for (int i = 0; i < users.size(); i++) {
-        if (users[i].getUserId() == loggeInUserId) {
+        if (users[i].getUserId() == loggedInUserId) {
             users[i].setPassword(newPassword);
             cout << "Password changed." << endl << endl;
 
@@ -104,18 +103,18 @@ void UserManager::changePasswordOfLoggedInUser() {
 }
 
 void UserManager::logout() {
-    loggeInUserId = 0;
+    loggedInUserId = 0;
 }
 
 bool UserManager::checkThatUserIsLoggedIn() {
-    if (loggeInUserId > 0)
+    if (loggedInUserId > 0)
         return true;
     else
         return false;
 }
 
 int UserManager::getIdOfLoggedInUser() {
-    return loggeInUserId;
+    return loggedInUserId;
 }
 
 vector <User> UserManager::loadUsersFromFile() {

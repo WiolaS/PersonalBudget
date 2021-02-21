@@ -6,7 +6,7 @@
 using namespace std;
 
 int main() {
-    PersonalBudget personalBudget ("UserFile.xml");
+    PersonalBudget personalBudget ("users.xml", "incomes.xml", "expenses.xml");
 
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << "    >>> Welcome to the Personal Budget application! <<<"    << endl;
@@ -44,15 +44,19 @@ int main() {
                 personalBudget.addIncome();
                 break;
             case '2':
-
+                personalBudget.addExpense();
                 break;
             case '3':
-
+                personalBudget.showTheBalanceSheetOfTheCurrentMonth();
+                system("pause");
                 break;
             case '4':
-
+                personalBudget.showTheBalanceSheetOfThePrevoiusMonth();
+                system("pause");
                 break;
             case '5':
+                personalBudget.showTheBalanceSheetOfTheSelectedPeriod();
+                system("pause");
 
                 break;
             case '6':
@@ -65,7 +69,8 @@ int main() {
         }
     }
 
-    cout << "Show ID loogedin user: " << personalBudget.getIdLoggedUser() << endl;
+    cout << "Show ID loogedin user: " << personalBudget.getIdOfLoggedInUser() << endl;
+
 
     return 0;
 }
