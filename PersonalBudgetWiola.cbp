@@ -34,7 +34,22 @@
 		</Compiler>
 		<Unit filename="AuxiliaryMethods.cpp" />
 		<Unit filename="AuxiliaryMethods.h" />
+		<Unit filename="CashFlow.cpp" />
+		<Unit filename="CashFlow.h" />
+		<Unit filename="CashFlowManager.cpp" />
+		<Unit filename="CashFlowManager.h" />
+		<Unit filename="Date.cpp" />
+		<Unit filename="Date.h" />
+		<Unit filename="DateManager.cpp" />
+		<Unit filename="DateManager.h" />
+		<Unit filename="ExpenseFile.cpp" />
+		<Unit filename="ExpenseFile.h" />
+		<Unit filename="IncomeFile.cpp" />
+		<Unit filename="IncomeFile.h" />
 		<Unit filename="Markup.cpp" />
+		<Unit filename="Markup.h" />
+		<Unit filename="PersonalBudget.cpp" />
+		<Unit filename="PersonalBudget.h" />
 		<Unit filename="TextFile.cpp" />
 		<Unit filename="TextFile.h" />
 		<Unit filename="User.cpp" />

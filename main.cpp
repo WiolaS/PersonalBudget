@@ -11,12 +11,12 @@ int main() {
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << "    >>> Welcome to the Personal Budget application! <<<"    << endl;
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    Sleep(3000);
+    Sleep(2500);
 
     char choice;
 
     while (true) {
-        if (!(personalBudget.checkThatUserIsLoggedIn())) {
+        if (!(personalBudget.checkIfUserIsLoggedIn())) {
             choice = AuxiliaryMethods::selectAnOptionFromTheMainMenu();
 
             switch (choice) {
@@ -32,11 +32,11 @@ int main() {
                 exit(0);
                 break;
             default:
-                cout << endl << "There is no such option on the menu." << endl << endl;
+                cout << endl << "There is no such option. Please try again." << endl << endl;
                 system("pause");
                 break;
             }
-        } else if (personalBudget.checkThatUserIsLoggedIn()) {
+        } else if (personalBudget.checkIfUserIsLoggedIn()) {
             choice = AuxiliaryMethods::selectAnOptionFromTheUserMenu();
 
             switch (choice) {
@@ -68,9 +68,6 @@ int main() {
             }
         }
     }
-
-    cout << "Show ID loogedin user: " << personalBudget.getIdOfLoggedInUser() << endl;
-
 
     return 0;
 }

@@ -12,7 +12,7 @@ void PersonalBudget::registerUser()
 int PersonalBudget::login()
 {
     userManager.login();
-    if (userManager.checkThatUserIsLoggedIn()) {
+    if (userManager.checkIfUserIsLoggedIn()) {
         cashFlowManager = new CashFlowManager (incomeFile.getFileName(), expenseFile.getFileName(), userManager.getIdOfLoggedInUser());
 
     }
@@ -35,9 +35,9 @@ int PersonalBudget::getIdOfLoggedInUser()
 
 }
 
-bool PersonalBudget::checkThatUserIsLoggedIn()
+bool PersonalBudget::checkIfUserIsLoggedIn()
 {
-    return userManager.checkThatUserIsLoggedIn();
+    return userManager.checkIfUserIsLoggedIn();
 
 }
 

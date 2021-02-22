@@ -95,13 +95,13 @@ char AuxiliaryMethods::selectAnOptionFromTheMainMenu() {
     char choice;
 
     system("cls");
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    cout << "          >>> THE MAIN MENU <<<" << endl;
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "                 >>>    MAIN MENU    <<<                  " << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << "1. REGISTRATION" << endl;
     cout << "2. LOGIN" << endl;
     cout << "3. EXIT" << endl;
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << endl << "Please enter the number of your choice: ";
     choice = loadCharacter();
 
@@ -112,19 +112,19 @@ char AuxiliaryMethods::selectAnOptionFromTheUserMenu () {
     char choice;
 
     system("cls");
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    cout << "          >>> THE USER MENU <<<" << endl;
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "                 >>>    USER MENU    <<<                  " << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << "1. Add revenue" << endl;
     cout << "2. Add expense" << endl;
-    cout << "------------------------------------------" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << "3. Balance sheet from the current month" << endl;
     cout << "4. Balance sheet from the previous month" << endl;
     cout << "5. Balance sheet from the selected period" << endl;
-    cout << "------------------------------------------" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << "6. Change password" << endl;
     cout << "7. Logout" << endl;
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << "Please enter the number of your choice: ";
 
     choice = loadCharacter();
@@ -137,14 +137,13 @@ char AuxiliaryMethods::selectAnOptionFromTheCashFlowMenu () {
 
     char choice;
     system("cls");
-
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    cout << "          >>> THE CASH FLOW MENU <<<" << endl;
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "                 >>> CASH FLOW MENU  <<<                  " << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << endl << "Whether the cash flow is from today?" << endl;
     cout << "1. Yes" << endl;
     cout << "2. No" << endl;
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << "Please enter the number of your choice: ";
 
     choice = loadCharacter();

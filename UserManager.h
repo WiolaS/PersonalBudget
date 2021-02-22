@@ -28,7 +28,7 @@ public:
     int login();
     void changePasswordOfLoggedInUser();
     void logout();
-    bool checkThatUserIsLoggedIn();
+    bool checkIfUserIsLoggedIn();
     int getIdOfLoggedInUser();
     vector <User> loadUsersFromFile();
 };

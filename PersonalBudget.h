@@ -30,7 +30,7 @@ public:
     void changePasswordOfLoggedInUser();
 
     int getIdOfLoggedInUser();
-    bool checkThatUserIsLoggedIn();
+    bool checkIfUserIsLoggedIn();
     void addIncome();
     void addExpense();
     void showTheBalanceSheetOfTheCurrentMonth();

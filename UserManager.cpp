@@ -82,9 +82,7 @@ int UserManager::login() {
         }
         i++;
     }
-    /*cout << "There is no user with this login" << endl << endl;
-    system("pause");
-    return 0;*/   /// zle napisane, zle miejsce
+    cout << "There is no such user login. Please try again." << endl << endl;
 }
 
 void UserManager::changePasswordOfLoggedInUser() {
@@ -95,7 +93,7 @@ void UserManager::changePasswordOfLoggedInUser() {
     for (int i = 0; i < users.size(); i++) {
         if (users[i].getUserId() == loggedInUserId) {
             users[i].setPassword(newPassword);
-            cout << "Password changed." << endl << endl;
+            cout << "Password has been changed." << endl << endl;
 
             userFile.saveNewPasswordToFile(users[i]);
         }
@@ -106,7 +104,7 @@ void UserManager::logout() {
     loggedInUserId = 0;
 }
 
-bool UserManager::checkThatUserIsLoggedIn() {
+bool UserManager::checkIfUserIsLoggedIn() {
     if (loggedInUserId > 0)
         return true;
     else
