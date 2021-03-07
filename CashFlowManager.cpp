@@ -1,5 +1,6 @@
 #include "CashFlowManager.h"
 #include "AuxiliaryMethods.h"
+#include <iomanip>      // setprecision
 
 using namespace std;
 
@@ -277,76 +278,6 @@ int CashFlowManager::addExpense () {
 
 }
 
-
-float CashFlowManager::calculateTheSumOfIncomesForThePreviousMonth() {
-    cout << "Test 1" << endl;
-    Date selectedIncomeDates;
-    Date currentDate = getDateFromTheSystem ();
-    int numberOfTheFirstMonthOfTheYear = 1;
-    int numberOfTheLasttMonthOfTheYear = 12;
-    float amountOfIncomesFromThePreviousMonth = 0;
-
-    for (int i = 0; i < incomes.size(); i++) {
-        cout << "Test 2" << endl;
-        //cashFlowDates[i] = splitTheDateFromTheStringIntoIndividualElements(incomes[i].getDate() + "-");
-        selectedIncomeDates = splitTheDateFromTheStringIntoIndividualElements(incomes[i].getDate() + "-");
-
-        cout << "Test 3" << endl;
-
-        if ((currentDate.getYear() == selectedIncomeDates.getYear() && currentDate.getMonth() == (selectedIncomeDates.getMonth() + 1)) ||
-                (currentDate.getYear() == (selectedIncomeDates.getYear() + 1) && (currentDate.getMonth() == numberOfTheFirstMonthOfTheYear &&
-                        selectedIncomeDates.getMonth() == numberOfTheLasttMonthOfTheYear)))  {
-
-            cout << "Test 4" << endl;
-            amountOfIncomesFromThePreviousMonth += incomes[i].getAmount();
-
-        }
-    }
-    cout << "Test 5" << endl;
-    cout << "amountOfIncomesFromThePreviousMonth" << amountOfIncomesFromThePreviousMonth << endl;
-    system("pause");
-
-    return amountOfIncomesFromThePreviousMonth;
-}
-
-float CashFlowManager::calculateTheSumOfExpensesForThePreviousMonth() {
-    Date selectedExpensesDates;
-    Date currentDate = getDateFromTheSystem();
-    int numberOfTheFirstMonthOfTheYear = 1;
-    int numberOfTheLasttMonthOfTheYear = 12;
-    float amountOfExpensesFromThePreviousMonth = 0;
-
-    for (int i = 0; i < expenses.size(); i++) {
-        selectedExpensesDates = splitTheDateFromTheStringIntoIndividualElements(expenses[i].getDate() + "-");
-        if ((currentDate.getYear() == selectedExpensesDates.getYear() && currentDate.getMonth() == (selectedExpensesDates.getMonth() + 1)) ||
-                (currentDate.getYear() == (selectedExpensesDates.getYear() + 1) && (currentDate.getMonth() == numberOfTheFirstMonthOfTheYear &&
-                        selectedExpensesDates.getMonth() == numberOfTheLasttMonthOfTheYear)))  {
-            amountOfExpensesFromThePreviousMonth += expenses[i].getAmount();
-        }
-    }
-    return amountOfExpensesFromThePreviousMonth;
-}
-
-void CashFlowManager::showTheBalanceSheetOfTheCurrentMonth() {
-    double sumOfIncomes = calculateTheSumOfIncomesForTheCurrentMonth();
-    double sumOfExpenses = calculateTheSumOfExpensesForTheCurrentMonth();
-    double amountOfTheDifferenceBetweenIncomeAndExpense;
-
-    if (sumOfIncomes >= sumOfExpenses) {
-        amountOfTheDifferenceBetweenIncomeAndExpense = sumOfIncomes - sumOfExpenses;
-    } else
-        amountOfTheDifferenceBetweenIncomeAndExpense = sumOfExpenses - sumOfIncomes;
-
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl << endl;
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    cout << "Total amount of incomes: " << sumOfIncomes << endl;
-    cout << "Total amount of expenses: " << sumOfExpenses << endl;
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    cout << "Balance: " << amountOfTheDifferenceBetweenIncomeAndExpense  << endl;
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    system("pause");
-}
-
 double CashFlowManager::calculateTheSumOfIncomesForTheCurrentMonth() {
     Date selectedIncomesDates;
     Date currentDate = getDateFromTheSystem();
@@ -408,12 +339,122 @@ double CashFlowManager::calculateTheSumOfExpensesForTheCurrentMonth() {
     return amountOfExpensesFromTheCurrentMonth;
 }
 
+void CashFlowManager::showTheBalanceSheetOfTheCurrentMonth() {
+    double sumOfIncomes = calculateTheSumOfIncomesForTheCurrentMonth();
+    double sumOfExpenses = calculateTheSumOfExpensesForTheCurrentMonth();
+    double amountOfTheDifferenceBetweenIncomeAndExpense;
+
+    if (sumOfIncomes >= sumOfExpenses) {
+        amountOfTheDifferenceBetweenIncomeAndExpense = sumOfIncomes - sumOfExpenses;
+    } else
+        amountOfTheDifferenceBetweenIncomeAndExpense = sumOfExpenses - sumOfIncomes;
+
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "Total amount of incomes: " << fixed <<setprecision(2) << sumOfIncomes << endl;
+    cout << "Total amount of expenses: " << fixed <<setprecision(2) << sumOfExpenses << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "Balance: " << amountOfTheDifferenceBetweenIncomeAndExpense  << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    system("pause");
+}
+
+double CashFlowManager::calculateTheSumOfIncomesForThePreviousMonth() {
+    Date selectedIncomesDates;
+    Date currentDate = getDateFromTheSystem ();
+    int numberOfTheFirstMonthOfTheYear = 1;
+    int numberOfTheLasttMonthOfTheYear = 12;
+    float amountOfIncomesFromThePreviousMonth = 0;
+    string amountInStringNotation = "";
+    int lengthOfString = 0;
+
+    system("cls");
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "                  >>>    Incomes    <<<                   " << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "|Date       |Amount       |Currency |Item                 " << endl;
+
+    for (int i = 0; i < incomes.size(); i++) {
+        selectedIncomesDates = splitTheDateFromTheStringIntoIndividualElements(incomes[i].getDate() + "-");
+
+        if ((currentDate.getYear() == selectedIncomesDates.getYear() && currentDate.getMonth() == (selectedIncomesDates.getMonth() + 1)) ||
+                (currentDate.getYear() == (selectedIncomesDates.getYear() + 1) && (currentDate.getMonth() == numberOfTheFirstMonthOfTheYear &&
+                        selectedIncomesDates.getMonth() == numberOfTheLasttMonthOfTheYear)))  {
+            amountInStringNotation = AuxiliaryMethods::convertFloatToStringAndSetPrecisionToTwoDecimalPlaces(incomes[i].getAmount());
+            lengthOfString = amountInStringNotation.length();
+
+            while (lengthOfString < 12) {
+                amountInStringNotation.insert(lengthOfString," ");
+                lengthOfString = amountInStringNotation.length();
+            }
+            amountOfIncomesFromThePreviousMonth += incomes[i].getAmount();
+            cout << "|" << incomes[i].getDate() << " |" << amountInStringNotation << " |" << "PLN      |" << incomes[i].getItem() << endl;
+        }
+    }
+    return amountOfIncomesFromThePreviousMonth;
+}
+
+
+double CashFlowManager::calculateTheSumOfExpensesForThePreviousMonth() {
+    Date selectedExpensesDates;
+    Date currentDate = getDateFromTheSystem();
+    int numberOfTheFirstMonthOfTheYear = 1;
+    int numberOfTheLasttMonthOfTheYear = 12;
+    float amountOfExpensesFromThePreviousMonth = 0;
+    string amountInStringNotation = "";
+    int lengthOfString = 0;
+
+    cout << endl << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "                  >>>    Expenses    <<<                  " << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "|Date       |Amount       |Currency |Item                 " << endl;
+
+    for (int i = 0; i < expenses.size(); i++) {
+        selectedExpensesDates = splitTheDateFromTheStringIntoIndividualElements(expenses[i].getDate() + "-");
+        if ((currentDate.getYear() == selectedExpensesDates.getYear() && currentDate.getMonth() == (selectedExpensesDates.getMonth() + 1)) ||
+                (currentDate.getYear() == (selectedExpensesDates.getYear() + 1) && (currentDate.getMonth() == numberOfTheFirstMonthOfTheYear &&
+                        selectedExpensesDates.getMonth() == numberOfTheLasttMonthOfTheYear)))  {
+            amountInStringNotation = AuxiliaryMethods::convertFloatToStringAndSetPrecisionToTwoDecimalPlaces(expenses[i].getAmount());
+            lengthOfString = amountInStringNotation.length();
+
+            while (lengthOfString < 12) {
+                amountInStringNotation.insert(lengthOfString," ");
+                lengthOfString = amountInStringNotation.length();
+            }
+            amountOfExpensesFromThePreviousMonth += expenses[i].getAmount();
+            cout << "|" << expenses[i].getDate() << " |" << amountInStringNotation << " |" << "PLN      |" << expenses[i].getItem() << endl;
+        }
+    }
+    return amountOfExpensesFromThePreviousMonth;
+}
+
+void CashFlowManager::showTheBalanceSheetOfThePrevoiusMonth() {
+    double sumOfIncomes = calculateTheSumOfIncomesForThePreviousMonth();
+    double sumOfExpenses = calculateTheSumOfExpensesForThePreviousMonth();
+    double amountOfTheDifferenceBetweenIncomeAndExpense;
+
+    if (sumOfIncomes >= sumOfExpenses) {
+        amountOfTheDifferenceBetweenIncomeAndExpense = sumOfIncomes - sumOfExpenses;
+    } else
+        amountOfTheDifferenceBetweenIncomeAndExpense = sumOfExpenses - sumOfIncomes;
+
+    cout << endl << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "Total amount of incomes: " << fixed <<setprecision(2) << sumOfIncomes << endl;
+    cout << "Total amount of expenses: " << fixed <<setprecision(2) << sumOfExpenses << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "Balance: " << amountOfTheDifferenceBetweenIncomeAndExpense  << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    system("pause");
+}
+
 float CashFlowManager::calculateTheSumOfIncomesForTheSelectedPeriod() {
     cout << "Test 1" << endl;
 
     Date startDate;
     Date endDate;
-    Date selectedIncomeDates;
+    Date selectedIncomesDates;
     Date currentDateInNumberFormat = getDateFromTheSystem();
     float amountOfIncomesFromTheSelectedPeriod = 0;
 
@@ -425,11 +466,11 @@ float CashFlowManager::calculateTheSumOfIncomesForTheSelectedPeriod() {
 
     for (int i = 0; i < incomes.size(); i++) {
         cout << "Test 2" << endl;
-        selectedIncomeDates = splitTheDateFromTheStringIntoIndividualElements(incomes[i].getDate() + "-");
+        selectedIncomesDates = splitTheDateFromTheStringIntoIndividualElements(incomes[i].getDate() + "-");
 
         cout << "Test 3" << endl;
-        if ((startDate.getYear() <= selectedIncomeDates.getYear() && startDate.getMonth() <= selectedIncomeDates.getMonth() && startDate.getDay() <= selectedIncomeDates.getDay()) &&
-                (endDate.getYear() >= selectedIncomeDates.getYear() && endDate.getMonth() >= selectedIncomeDates.getMonth() && endDate.getDay() >= selectedIncomeDates.getDay())) {
+        if ((startDate.getYear() <= selectedIncomesDates.getYear() && startDate.getMonth() <= selectedIncomesDates.getMonth() && startDate.getDay() <= selectedIncomesDates.getDay()) &&
+                (endDate.getYear() >= selectedIncomesDates.getYear() && endDate.getMonth() >= selectedIncomesDates.getMonth() && endDate.getDay() >= selectedIncomesDates.getDay())) {
 
             cout << "Test 4" << endl;
             amountOfIncomesFromTheSelectedPeriod += incomes[i].getAmount();
@@ -482,7 +523,7 @@ void CashFlowManager::showTheBalanceSheetOfTheSelectedPeriod() {
     } else
         amountOfTheDifferenceBetweenIncomeAndExpense = sumOfExpenses - sumOfIncomes;
 
-    cout << "----------------------------------------------" << endl;
+    cout << endl << "----------------------------------------------" << endl;
     cout << "----------------------------------------------" << endl;
     cout << "Total amount of incomes: " << sumOfIncomes << endl;
     cout << "Total amount of expenses: " << sumOfExpenses << endl;
@@ -493,20 +534,7 @@ void CashFlowManager::showTheBalanceSheetOfTheSelectedPeriod() {
 
 
 
-float CashFlowManager::showTheBalanceSheetOfThePrevoiusMonth() {
-    float sumOfIncomes = calculateTheSumOfIncomesForThePreviousMonth();
-    float sumOfExpenses = calculateTheSumOfExpensesForThePreviousMonth();
-    float amountOfTheDifferenceBetweenIncomeAndExpense;
 
-    if (sumOfIncomes >= sumOfExpenses) {
-        amountOfTheDifferenceBetweenIncomeAndExpense = sumOfIncomes - sumOfExpenses;
-    } else
-        amountOfTheDifferenceBetweenIncomeAndExpense = sumOfExpenses - sumOfIncomes;
-
-    cout << "amountOfTheDifferenceBetweenIncomeAndExpense" << amountOfTheDifferenceBetweenIncomeAndExpense << endl;
-    system("pause");
-    return amountOfTheDifferenceBetweenIncomeAndExpense;
-}
 
 
 

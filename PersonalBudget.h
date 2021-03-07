@@ -34,7 +34,7 @@ public:
     void addIncome();
     void addExpense();
     void showTheBalanceSheetOfTheCurrentMonth();
-    float showTheBalanceSheetOfThePrevoiusMonth();
+    void showTheBalanceSheetOfThePrevoiusMonth();
     void showTheBalanceSheetOfTheSelectedPeriod();
 
 

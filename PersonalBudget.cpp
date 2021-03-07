@@ -57,7 +57,7 @@ void PersonalBudget::showTheBalanceSheetOfTheCurrentMonth()
     return cashFlowManager -> showTheBalanceSheetOfTheCurrentMonth();
 }
 
-float PersonalBudget::showTheBalanceSheetOfThePrevoiusMonth()
+void PersonalBudget::showTheBalanceSheetOfThePrevoiusMonth()
 {
     return cashFlowManager -> showTheBalanceSheetOfThePrevoiusMonth();
 }
