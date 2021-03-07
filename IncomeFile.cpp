@@ -29,11 +29,11 @@ void IncomeFile::addIncomeToFile(CashFlow income) {
         xml.AddElem( "date", income.getDate());
         xml.AddElem( "item", income.getItem());
         xml.AddElem( "amount", AuxiliaryMethods::convertFloatToStringAndSetPrecisionToTwoDecimalPlaces(income.getAmount()));
-        xml.Save("C:\\Users\\smile\\Desktop\\GitHub_nauka\\PersonalBudget_Wioleta\\incomes.xml");
+        xml.Save("C:\\Users\\wiole\\Desktop\\GitHub_nauka\\PersonalBudgetWiola\\incomes.xml");
         xml.OutOfElem(); // back out level
 
     } else {
-        bool bSuccess = xml.Load( "C:\\Users\\smile\\Desktop\\GitHub_nauka\\PersonalBudget_Wioleta\\incomes.xml" );
+        bool bSuccess = xml.Load( "C:\\Users\\wiole\\Desktop\\GitHub_nauka\\PersonalBudgetWiola\\incomes.xml" );
         xml.ResetPos(); // top of document
         xml.FindElem(); // users element is root
         xml.IntoElem(); // inside users
@@ -48,7 +48,7 @@ void IncomeFile::addIncomeToFile(CashFlow income) {
                 xml.AddElem( "item", income.getItem());
                 xml.AddElem( "amount", AuxiliaryMethods::convertFloatToStringAndSetPrecisionToTwoDecimalPlaces(income.getAmount()));
 
-                xml.Save("C:\\Users\\smile\\Desktop\\GitHub_nauka\\PersonalBudget_Wioleta\\incomes.xml");
+                xml.Save("C:\\Users\\wiole\\Desktop\\GitHub_nauka\\PersonalBudgetWiola\\incomes.xml");
                 xml.OutOfElem(); // back out level
             }
         }
@@ -62,7 +62,7 @@ vector <CashFlow> IncomeFile::loadIncomesOfTheLoggedinUserFromTheFile(int logedI
     vector <CashFlow> incomes;
 
     CMarkup xml;
-    bool bSuccess = xml.Load( "C:\\Users\\smile\\Desktop\\GitHub_nauka\\PersonalBudget_Wioleta\\incomes.xml" );
+    bool bSuccess = xml.Load( "C:\\Users\\wiole\\Desktop\\GitHub_nauka\\PersonalBudgetWiola\\incomes.xml" );
     xml.ResetPos(); // top of document
     xml.FindElem(); // users element is root
     xml.IntoElem(); // inside users

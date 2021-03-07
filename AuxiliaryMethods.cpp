@@ -133,14 +133,14 @@ char AuxiliaryMethods::selectAnOptionFromTheUserMenu () {
 }
 
 
-char AuxiliaryMethods::selectAnOptionFromTheCashFlowMenu () {
+char AuxiliaryMethods::selectAnOptionFromTheCashFlowMenu (string typeOfCashFlow) {
 
     char choice;
     system("cls");
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << "                 >>> CASH FLOW MENU  <<<                  " << endl;
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    cout << endl << "Whether the cash flow is from today?" << endl;
+    cout << endl << "Is this "<< typeOfCashFlow << " from today?" << endl;
     cout << "1. Yes" << endl;
     cout << "2. No" << endl;
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
