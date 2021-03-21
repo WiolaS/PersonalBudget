@@ -6,25 +6,21 @@ using namespace std;
 
 Date CashFlowManager::getDateFromTheSystem() {
 
-    dateManager.getDateFromTheSystem();
+    return dateManager.getDateFromTheSystem();
 }
 
-
-
 Date CashFlowManager::splitTheDateFromTheStringIntoIndividualElements (string dateEnteredByTheUser) {
-    dateManager.splitTheDateFromTheStringIntoIndividualElements(dateEnteredByTheUser);
+    return dateManager.splitTheDateFromTheStringIntoIndividualElements(dateEnteredByTheUser);
 }
 
 string CashFlowManager::enterTheNewDate (Date currentDate) {
-    dateManager.enterTheNewDate (currentDate);
+    return dateManager.enterTheNewDate (currentDate);
 }
 
 string CashFlowManager::setTheDateOfTheCashFlow (string typeOfCashFlow) {
 
-    dateManager.setTheDateOfTheCashFlow (typeOfCashFlow);
+    return dateManager.setTheDateOfTheCashFlow (typeOfCashFlow);
 }
-
-
 
 string CashFlowManager::enterTheItemOfCashFlow() {
     string itemDescribingTheCashFlow;
@@ -185,7 +181,7 @@ float CashFlowManager::calculateTheSumOfIncomesForTheCurrentMonth() {
 
     sortIncomesByDate();
     system("cls");
-    AuxiliaryMethods::AuxiliaryMethods::layoutShowingTheSelectedCashFlow (typeOfcashFlow);
+    AuxiliaryMethods::layoutShowingTheSelectedCashFlow (typeOfcashFlow);
 
     for (int i = 0; i < incomes.size(); i++) {
         dateInDateFormat = splitTheDateFromTheStringIntoIndividualElements(incomes[i].getDate() + "-");

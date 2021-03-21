@@ -31,7 +31,7 @@ void PersonalBudget::changePasswordOfLoggedInUser()
 
 int PersonalBudget::getIdOfLoggedInUser()
 {
-    userManager.getIdOfLoggedInUser();
+    userManager.getIdOfLoggedInUser();  // return??
 
 }
 
