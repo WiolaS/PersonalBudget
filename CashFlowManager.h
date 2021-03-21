@@ -50,15 +50,20 @@ public:
     string enterTheItemOfCashFlow ();
     float enterTheAmountOfCashFlow ();
 
-    double calculateTheSumOfIncomesForTheCurrentMonth();
-    double calculateTheSumOfExpensesForTheCurrentMonth();
+    void sortIncomesByDate();
+    void sortExpensesByDate();
+    string changTheFloatTypeToStringOfLength12 (float amountOfCasfFlow);
+    void showTheTotalAmountOfCashFlows (float sumOfIncomes, float sumOfExpenses);
+
+    float calculateTheSumOfIncomesForTheCurrentMonth();
+    float calculateTheSumOfExpensesForTheCurrentMonth();
     void showTheBalanceSheetOfTheCurrentMonth();
 
-    double calculateTheSumOfIncomesForThePreviousMonth();
-    double calculateTheSumOfExpensesForThePreviousMonth();
+    float calculateTheSumOfIncomesForThePreviousMonth();
+    float calculateTheSumOfExpensesForThePreviousMonth();
     void showTheBalanceSheetOfThePrevoiusMonth();
 
-    float calculateTheSumOfIncomesForTheSelectedPeriod();
+    float calculateTheSumOfIncomesForTheSelectedPeriod(Date startDate, Date endDate);
     float calculateTheSumOfExpensesForTheSelectedPeriod(Date startDate, Date endDate);
     void showTheBalanceSheetOfTheSelectedPeriod();
 
