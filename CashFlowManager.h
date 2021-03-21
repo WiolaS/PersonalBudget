@@ -3,9 +3,9 @@
 #include <iostream>
 #include <vector>
 #include "CashFlow.h"
-//#include "Date.h"  // it is included in CashFlow.h
 #include "IncomeFile.h"
 #include "ExpenseFile.h"
+#include "DateManager.h"
 #include <windows.h>
 #include <sstream>
 #include <string>
@@ -15,11 +15,12 @@ using namespace std;
 class CashFlowManager {
 
     const int LOGGED_IN_USER_ID;
-    vector <Date> dates;
+    //vector <Date> dates;
     vector <CashFlow> incomes;
     vector <CashFlow> expenses;
     IncomeFile incomeFile;
     ExpenseFile expenseFile;
+    DateManager dateManager;
 
 
 public:
@@ -34,25 +35,16 @@ public:
     int addExpense ();
     void setACashFlowDate ();
 
-    string replaceDateElementsWithASingleString (Date date);
     Date splitTheDateFromTheStringIntoIndividualElements (string dateEnteredByTheUser);
-    string combineDateElementsIntoAString (int year, int month, int day);
     string setTheDateOfTheCashFlow (string typeOfCashFlow);
     Date getDateFromTheSystem ();
     string enterTheNewDate (Date currentDate);
-    bool checkIfTheYearIsALeapYear (int year);
-    int checkHowManyDaysAMonthHas (int month, int year);
 
-    bool checkTheCorrectnesOfTheEnteredDate (Date dateEnteredByTheUser, Date currentDate) ;
-    bool checkIfTheYearNumberIsCorrect (Date dateEnteredByTheUser, Date currentDate);
-    bool checkIfTheDayNumberIsCorrect (Date dateEnteredByTheUser, Date currentDate);
-    bool checkIfTheMonthNumberWithTheDayNumberAreCorrect (Date dateEnteredByTheUser, Date currentDate);
     string enterTheItemOfCashFlow ();
     float enterTheAmountOfCashFlow ();
 
     void sortIncomesByDate();
     void sortExpensesByDate();
-    string changTheFloatTypeToStringOfLength12 (float amountOfCasfFlow);
     void showTheTotalAmountOfCashFlows (float sumOfIncomes, float sumOfExpenses);
 
     float calculateTheSumOfIncomesForTheCurrentMonth();
@@ -67,11 +59,11 @@ public:
     float calculateTheSumOfExpensesForTheSelectedPeriod(Date startDate, Date endDate);
     void showTheBalanceSheetOfTheSelectedPeriod();
 
-    //void selectIncomesFromThePreviousMonth ();
-
 
 };
 
 #endif // CASHFLOWMANAGER
+
+
 
 

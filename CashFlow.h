@@ -1,7 +1,7 @@
 #ifndef CASHFLOW_H
 #define CASHFLOW_H
 #include <iostream>
-#include "Date.h"
+#include "Date.h"  // replace - DateManager
 
 using namespace std;
 

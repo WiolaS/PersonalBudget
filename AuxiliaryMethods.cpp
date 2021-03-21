@@ -82,13 +82,24 @@ string AuxiliaryMethods::checkIfThereIsAComma(string amountOfCashFlowInStringFor
     if (position != string::npos) {
         amountOfCashFlowInStringFormat = replaceCommaToDot(amountOfCashFlowInStringFormat, position);
     }
-
-    /* for (int i  = 0; i < amountOfCashFlowInStringFormat.length(); i++) {
-         if (amountOfCashFlowInStringFormat[i] == signSought) {
-             amountOfCashFlowInStringFormat = replaceCommaToDot(amountOfCashFlowInStringFormat, i);
-         }
-     }*/
     return amountOfCashFlowInStringFormat;
+}
+
+string AuxiliaryMethods::changTheFloatTypeToStringOfLength12 (float amountOfCasfFlow) {
+    string amountInStringNotation = "";
+    int lengthOfString = 0;
+
+    amountInStringNotation = AuxiliaryMethods::convertFloatToStringAndSetPrecisionToTwoDecimalPlaces(amountOfCasfFlow);
+    lengthOfString = amountInStringNotation.length();
+
+    lengthOfString = amountInStringNotation.length();
+
+    while (lengthOfString < 12) {
+        amountInStringNotation.insert(0," ");
+        lengthOfString = amountInStringNotation.length();
+    }
+
+    return amountInStringNotation;
 }
 
 char AuxiliaryMethods::selectAnOptionFromTheMainMenu() {
@@ -157,8 +168,8 @@ void AuxiliaryMethods::layoutShowingTheSelectedCashFlow (string typeOfCashFlow) 
 
     cout << endl << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    cout << "                  >>>    " << typeOfCashFlow << "    <<<                  " << endl;
+    cout << "                       >>>    " << typeOfCashFlow << "    <<<                  " << endl;
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    cout << "|   Date    |   Amount    |Currency |        Item         " << endl;
+    cout << "|   Date    |   Amount    |Currency |             Item         " << endl;
 
 }

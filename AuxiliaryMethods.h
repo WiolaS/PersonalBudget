@@ -22,6 +22,7 @@ public:
     static string replaceCommaToDot (string amountOfCashFlowInStringFormat, char position);
     static string checkIfThereIsAComma(string amountOfCashFlowInStringFormat);
     static void layoutShowingTheSelectedCashFlow (string typeOfCashFlow);
+    static string changTheFloatTypeToStringOfLength12 (float amountOfCasfFlow);
 
 };
 
