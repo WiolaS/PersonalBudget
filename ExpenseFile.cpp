@@ -15,12 +15,10 @@ int ExpenseFile::getNumberOfLoadedExpenses() {
 
 void ExpenseFile::addExpenseToFile(CashFlow expense) {
     int numberOfExpenses = getNumberOfLoadedExpenses();
-
-    string numberOfExpensesInStringNotation = AuxiliaryMethods::convertIntToString(numberOfExpenses);
+    string numberOfExpensesInStringFormat = AuxiliaryMethods::convertIntToString(numberOfExpenses);
     int numberOfParameters = 5;
 
     CMarkup xml;
-
     if (numberOfExpenses == 0) {
         xml.AddElem("expenses");
         xml.IntoElem();
@@ -31,14 +29,13 @@ void ExpenseFile::addExpenseToFile(CashFlow expense) {
         xml.AddElem( "amount", AuxiliaryMethods::convertFloatToStringAndSetPrecisionToTwoDecimalPlaces(expense.getAmount()));
         xml.Save("C:\\Users\\wiole\\Desktop\\GitHub_nauka\\PersonalBudgetWiola\\expenses.xml");
         xml.OutOfElem(); // back out level
-
     } else {
         bool bSuccess = xml.Load( "C:\\Users\\wiole\\Desktop\\GitHub_nauka\\PersonalBudgetWiola\\expenses.xml" );
         xml.ResetPos(); // top of document
         xml.FindElem(); // users element is root
         xml.IntoElem(); // inside users
         while ( xml.FindElem("expenseId") ) {
-            if ( xml.GetData() == numberOfExpensesInStringNotation ) {
+            if ( xml.GetData() == numberOfExpensesInStringFormat ) {
                 for (int i = 0; i < numberOfParameters; i++) {
                     xml.FindElem();
                 }
@@ -47,7 +44,6 @@ void ExpenseFile::addExpenseToFile(CashFlow expense) {
                 xml.AddElem( "date", expense.getDate());
                 xml.AddElem( "item", expense.getItem());
                 xml.AddElem( "amount", AuxiliaryMethods::convertFloatToStringAndSetPrecisionToTwoDecimalPlaces(expense.getAmount()));
-
                 xml.Save("C:\\Users\\wiole\\Desktop\\GitHub_nauka\\PersonalBudgetWiola\\expenses.xml");
                 xml.OutOfElem(); // back out level
             }
@@ -86,6 +82,5 @@ vector <CashFlow> ExpenseFile::loadExpensesOfTheLoggedinUserFromTheFile(int loge
         expenses.push_back(expense);
     }
     return expenses;
-
 }
 

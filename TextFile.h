@@ -10,11 +10,13 @@ using namespace std;
 class TextFile {
     const string FILE_NAME;
 
+
 public:
     TextFile(string fileName) : FILE_NAME(fileName) {
     }
     string getFileName();
-    bool checkThatTheFileIsEmpty(fstream &textFile);
+    bool checkIfTheFileIsEmpty(fstream &textFile);
+
 };
 
 #endif // TEXTFILE

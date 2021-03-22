@@ -1,10 +1,10 @@
 #include "AuxiliaryMethods.h"
 #include <windows.h>
-#include <sstream> //konwersja int na str
+#include <sstream> //convert
 #include <fstream>
 #include <algorithm>
 #include <string>
-#include <iomanip> //serprecision
+#include <iomanip> //setprecision
 
 using namespace std;
 
@@ -22,26 +22,21 @@ int AuxiliaryMethods::convertStringToInt(string number) {
     int numberInt;
     istringstream iss(number);
     iss >> numberInt;
-
     return numberInt;
 }
 
 string AuxiliaryMethods::convertFloatToStringAndSetPrecisionToTwoDecimalPlaces (float amount) {
-
     stringstream ss;
     ss << fixed << setprecision(2) << amount;
     string correctedStringAmount = ss.str();
-
     return correctedStringAmount;
 }
-
 
 float AuxiliaryMethods::convertStringToFloat(string number) {
     float numberFloat;
     istringstream iss(number);
     iss >> numberFloat;
     return numberFloat;
-
 }
 
 string AuxiliaryMethods::loadLine() {
@@ -68,12 +63,10 @@ char AuxiliaryMethods::loadCharacter() {
 
 string AuxiliaryMethods::replaceCommaToDot (string amountOfCashFlowInStringFormat, char position) {
     amountOfCashFlowInStringFormat.replace(position,1,".");
-
     return amountOfCashFlowInStringFormat;
 }
 
 string AuxiliaryMethods::checkIfThereIsAComma(string amountOfCashFlowInStringFormat) {
-
     string signSought = ",";
     int position = 0;
 
@@ -85,21 +78,19 @@ string AuxiliaryMethods::checkIfThereIsAComma(string amountOfCashFlowInStringFor
     return amountOfCashFlowInStringFormat;
 }
 
-string AuxiliaryMethods::changTheFloatTypeToStringOfLength12 (float amountOfCasfFlow) {
-    string amountInStringNotation = "";
+string AuxiliaryMethods::changeTheFloatTypeToStringOfLength12 (float amountOfCasfFlow) {
+    string amountInStringFormat = "";
     int lengthOfString = 0;
 
-    amountInStringNotation = AuxiliaryMethods::convertFloatToStringAndSetPrecisionToTwoDecimalPlaces(amountOfCasfFlow);
-    lengthOfString = amountInStringNotation.length();
-
-    lengthOfString = amountInStringNotation.length();
+    amountInStringFormat = AuxiliaryMethods::convertFloatToStringAndSetPrecisionToTwoDecimalPlaces(amountOfCasfFlow);
+    lengthOfString = amountInStringFormat.length();
+    lengthOfString = amountInStringFormat.length();
 
     while (lengthOfString < 12) {
-        amountInStringNotation.insert(0," ");
-        lengthOfString = amountInStringNotation.length();
+        amountInStringFormat.insert(0," ");
+        lengthOfString = amountInStringFormat.length();
     }
-
-    return amountInStringNotation;
+    return amountInStringFormat;
 }
 
 char AuxiliaryMethods::selectAnOptionFromTheMainMenu() {
@@ -114,8 +105,8 @@ char AuxiliaryMethods::selectAnOptionFromTheMainMenu() {
     cout << "3. EXIT" << endl;
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << endl << "Please enter the number of your choice: ";
-    choice = loadCharacter();
 
+    choice = loadCharacter();
     return choice;
 }
 
@@ -126,7 +117,7 @@ char AuxiliaryMethods::selectAnOptionFromTheUserMenu () {
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << "                      >>>    USER MENU    <<<                  " << endl;
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    cout << "1. Add revenue" << endl;
+    cout << "1. Add income" << endl;
     cout << "2. Add expense" << endl;
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << "3. Balance sheet from the current month" << endl;
@@ -139,13 +130,11 @@ char AuxiliaryMethods::selectAnOptionFromTheUserMenu () {
     cout << "Please enter the number of your choice: ";
 
     choice = loadCharacter();
-
     return choice;
 }
 
 
 char AuxiliaryMethods::selectAnOptionFromTheCashFlowMenu (string typeOfCashFlow) {
-
     char choice;
     system("cls");
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
@@ -158,18 +147,15 @@ char AuxiliaryMethods::selectAnOptionFromTheCashFlowMenu (string typeOfCashFlow)
     cout << "Please enter the number of your choice: ";
 
     choice = loadCharacter();
-
     return choice;
 }
 
 
 
 void AuxiliaryMethods::layoutShowingTheSelectedCashFlow (string typeOfCashFlow) {
-
     cout << endl << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << "                       >>>    " << typeOfCashFlow << "    <<<                  " << endl;
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     cout << "|   Date    |   Amount    |Currency |             Item         " << endl;
-
 }

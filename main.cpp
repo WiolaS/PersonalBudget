@@ -1,7 +1,6 @@
 #include <iostream>
 #include "PersonalBudget.h"
 #include "UserManager.h"
-#include <windows.h>
 
 using namespace std;
 
@@ -14,7 +13,6 @@ int main() {
     Sleep(2500);
 
     char choice;
-
     while (true) {
         if (!(personalBudget.checkIfUserIsLoggedIn())) {
             choice = AuxiliaryMethods::selectAnOptionFromTheMainMenu();
@@ -63,11 +61,10 @@ int main() {
                 personalBudget.changePasswordOfLoggedInUser();
                 break;
             case '7':
-                //wylogujUzytkownika();
+                personalBudget.logout();
                 break;
             }
         }
     }
-
     return 0;
 }

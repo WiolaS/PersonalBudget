@@ -13,7 +13,6 @@ public:
     static float convertStringToFloat(string number);
     static string convertFloatToStringAndSetPrecisionToTwoDecimalPlaces (float amount);
     static string loadLine();
-
     static string replaceCommaWithDot();
     static char selectAnOptionFromTheMainMenu();
     static char selectAnOptionFromTheUserMenu();
@@ -22,7 +21,7 @@ public:
     static string replaceCommaToDot (string amountOfCashFlowInStringFormat, char position);
     static string checkIfThereIsAComma(string amountOfCashFlowInStringFormat);
     static void layoutShowingTheSelectedCashFlow (string typeOfCashFlow);
-    static string changTheFloatTypeToStringOfLength12 (float amountOfCasfFlow);
+    static string changeTheFloatTypeToStringOfLength12 (float amountOfCasfFlow);
 
 };
 

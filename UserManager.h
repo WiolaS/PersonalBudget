@@ -17,6 +17,7 @@ class UserManager {
     int getIdOfNewUser();
     bool checkIfSuchLoginAlreadyExists(string login);
 
+
 public:
 
     UserManager (string userFileName) : userFile (userFileName) {

@@ -15,12 +15,10 @@ int IncomeFile::getNumberOfLoadedIncomes() {
 
 void IncomeFile::addIncomeToFile(CashFlow income) {
     int numberOfIncomes = getNumberOfLoadedIncomes();
-
     string strNumberOfIncomes = AuxiliaryMethods::convertIntToString(numberOfIncomes);
     int numberOfParameters = 5;
 
     CMarkup xml;
-
     if (numberOfIncomes == 0) {
         xml.AddElem("incomes");
         xml.IntoElem();
@@ -31,7 +29,6 @@ void IncomeFile::addIncomeToFile(CashFlow income) {
         xml.AddElem( "amount", AuxiliaryMethods::convertFloatToStringAndSetPrecisionToTwoDecimalPlaces(income.getAmount()));
         xml.Save("C:\\Users\\wiole\\Desktop\\GitHub_nauka\\PersonalBudgetWiola\\incomes.xml");
         xml.OutOfElem(); // back out level
-
     } else {
         bool bSuccess = xml.Load( "C:\\Users\\wiole\\Desktop\\GitHub_nauka\\PersonalBudgetWiola\\incomes.xml" );
         xml.ResetPos(); // top of document
@@ -47,7 +44,6 @@ void IncomeFile::addIncomeToFile(CashFlow income) {
                 xml.AddElem( "date", income.getDate());
                 xml.AddElem( "item", income.getItem());
                 xml.AddElem( "amount", AuxiliaryMethods::convertFloatToStringAndSetPrecisionToTwoDecimalPlaces(income.getAmount()));
-
                 xml.Save("C:\\Users\\wiole\\Desktop\\GitHub_nauka\\PersonalBudgetWiola\\incomes.xml");
                 xml.OutOfElem(); // back out level
             }

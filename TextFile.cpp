@@ -3,7 +3,7 @@
 
 using namespace std;
 
-bool TextFile::checkThatTheFileIsEmpty(fstream &textFile) {
+bool TextFile::checkIfTheFileIsEmpty(fstream &textFile) {
     textFile.seekg(0, ios::end);
     if (textFile.tellg() == 0)
         return true;

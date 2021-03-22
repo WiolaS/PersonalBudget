@@ -1,9 +1,7 @@
 #include "DateManager.h"
 #include "AuxiliaryMethods.h"
-#include <iomanip>      // setprecision
 
 using namespace std;
-
 
 Date DateManager::getDateFromTheSystem() {
     Date date;
@@ -13,7 +11,6 @@ Date DateManager::getDateFromTheSystem() {
     date.setYear(st.wYear);
     date.setMonth(st.wMonth);
     date.setDay(st.wDay);
-
     return date;
 }
 
@@ -29,9 +26,7 @@ string DateManager::combineDateElementsIntoAString(int year, int month, int day)
     if (day < 10) {
         stDay = "0" + AuxiliaryMethods::convertIntToString (day);
     }
-
     stdate = stYear + "-" + stMonth + "-" + stDay;
-
     return stdate;
 }
 
@@ -64,12 +59,10 @@ Date DateManager::splitTheDateFromTheStringIntoIndividualElements (string dateEn
             singleDateNumber++;
         }
     }
-
     return date;
 }
 
 string DateManager::setTheDateOfTheCashFlow (string typeOfCashFlow) {
-
     string dateEnteredByTheUser;
     Date currentDateInNumberFormat;
     string dateOfTheCashFlow;
@@ -81,31 +74,24 @@ string DateManager::setTheDateOfTheCashFlow (string typeOfCashFlow) {
     switch (choice) {
     case '1':
         dateOfTheCashFlow = replaceDateElementsWithASingleString (currentDateInNumberFormat);
-        system("pause");
         break;
     case '2':
-
         dateEnteredByTheUser = enterTheNewDate(currentDateInNumberFormat);
         dateOfTheCashFlow = dateEnteredByTheUser;
-
-        system("pause");
         break;
     default:
         cout << endl << "There is no such option on the menu." << endl << endl;
         system("pause");
         break;
-
     }
     return dateOfTheCashFlow;
 }
-
 
 string DateManager::enterTheNewDate (Date currentDate) {
     string dateEnteredByTheUser;
     Date dateEnteredByTheUserInNumberFormat;
 
     cout << "Please enter date in the format yyyy-mm-dd: ";
-
     dateEnteredByTheUser = AuxiliaryMethods::loadLine();
     dateEnteredByTheUserInNumberFormat = splitTheDateFromTheStringIntoIndividualElements(dateEnteredByTheUser + "-");
 
@@ -125,7 +111,6 @@ bool DateManager::checkIfTheYearIsALeapYear (int year) {
         return false;
 }
 
-
 int DateManager::checkHowManyDaysAMonthHas (int month, int year) {
     int numberOfDaysOfTheMonth = 0;
 
@@ -143,7 +128,6 @@ int DateManager::checkHowManyDaysAMonthHas (int month, int year) {
 }
 
 bool DateManager::checkTheCorrectnesOfTheEnteredDate (Date dateEnteredByTheUser, Date currentDate) {
-
     if(checkIfTheYearNumberIsCorrect(dateEnteredByTheUser, currentDate) == true) {
         if(checkIfTheMonthNumberWithTheDayNumberAreCorrect(dateEnteredByTheUser, currentDate) == true)
             return true;
@@ -153,7 +137,6 @@ bool DateManager::checkTheCorrectnesOfTheEnteredDate (Date dateEnteredByTheUser,
     } else
         return false;
 }
-
 
 bool DateManager::checkIfTheYearNumberIsCorrect (Date dateEnteredByTheUser, Date currentDate) {
 
@@ -170,9 +153,7 @@ bool DateManager::checkIfTheDayNumberIsCorrect (Date dateEnteredByTheUser, Date 
         return false;
 }
 
-
 bool DateManager::checkIfTheMonthNumberWithTheDayNumberAreCorrect (Date dateEnteredByTheUser, Date currentDate) {
-
     int numberOfTheFirstMonthOfTheYear = 1;
     int numberOfTheLastMonthOfTheYear = 12;
 
