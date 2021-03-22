@@ -55,10 +55,10 @@ int main() {
             case '5':
                 personalBudget.showTheBalanceSheetOfTheSelectedPeriod();
                 system("pause");
-
                 break;
             case '6':
                 personalBudget.changePasswordOfLoggedInUser();
+                system("pause");
                 break;
             case '7':
                 personalBudget.logout();
