@@ -15,7 +15,6 @@ public:
     TextFile(string fileName) : FILE_NAME(fileName) {
     }
     string getFileName();
-    bool checkIfTheFileIsEmpty(fstream &textFile);
 
 };
 
