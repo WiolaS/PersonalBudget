@@ -19,7 +19,6 @@ public:
 
     void addExpenseToFile(CashFlow income);
     vector <CashFlow> loadExpensesOfTheLoggedinUserFromTheFile(int logedInUserId);
-
     void setNumberOfLoadedExpenses (int numberOfLoadedIncomes);
     int getNumberOfLoadedExpenses();
 };

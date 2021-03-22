@@ -11,8 +11,6 @@ using namespace std;
 class IncomeFile : public TextFile {
 
     int idOfTheLastIncome;
-    //CashFlow income;
-
 
 public:
     IncomeFile (string incomeFileName): TextFile (incomeFileName)  {
@@ -21,7 +19,6 @@ public:
 
     void addIncomeToFile(CashFlow income);
     vector <CashFlow> loadIncomesOfTheLoggedinUserFromTheFile(int logedInUserId);
-
     void setNumberOfLoadedIncomes (int numberOfLoadedIncomes);
     int getNumberOfLoadedIncomes();
 };

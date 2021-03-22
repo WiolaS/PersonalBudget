@@ -9,12 +9,11 @@ void PersonalBudget::registerUser()
     userManager.registerUser();
 }
 
-int PersonalBudget::login()
+void PersonalBudget::login()
 {
     userManager.login();
     if (userManager.checkIfUserIsLoggedIn()) {
         cashFlowManager = new CashFlowManager (incomeFile.getFileName(), expenseFile.getFileName(), userManager.getIdOfLoggedInUser());
-
     }
 }
 
@@ -28,11 +27,9 @@ void PersonalBudget::changePasswordOfLoggedInUser()
     userManager.changePasswordOfLoggedInUser();
 }
 
-
 int PersonalBudget::getIdOfLoggedInUser()
 {
-    userManager.getIdOfLoggedInUser();
-
+    return userManager.getIdOfLoggedInUser();
 }
 
 bool PersonalBudget::checkIfUserIsLoggedIn()
@@ -41,11 +38,16 @@ bool PersonalBudget::checkIfUserIsLoggedIn()
 
 }
 
+void PersonalBudget::logout() {
+    userManager.logout();
+    delete cashFlowManager;
+    cashFlowManager = NULL;
+}
+
 void PersonalBudget::addIncome()
 {
     cashFlowManager -> addIncome();
 }
-
 
 void PersonalBudget::addExpense()
 {
@@ -57,7 +59,7 @@ void PersonalBudget::showTheBalanceSheetOfTheCurrentMonth()
     return cashFlowManager -> showTheBalanceSheetOfTheCurrentMonth();
 }
 
-float PersonalBudget::showTheBalanceSheetOfThePrevoiusMonth()
+void PersonalBudget::showTheBalanceSheetOfThePrevoiusMonth()
 {
     return cashFlowManager -> showTheBalanceSheetOfThePrevoiusMonth();
 }

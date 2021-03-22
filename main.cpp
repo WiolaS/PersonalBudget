@@ -1,20 +1,18 @@
 #include <iostream>
 #include "PersonalBudget.h"
 #include "UserManager.h"
-#include <windows.h>
 
 using namespace std;
 
 int main() {
     PersonalBudget personalBudget ("users.xml", "incomes.xml", "expenses.xml");
 
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    cout << "    >>> Welcome to the Personal Budget application! <<<"    << endl;
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "         >>> Welcome to the Personal Budget application! <<<"    << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     Sleep(2500);
 
     char choice;
-
     while (true) {
         if (!(personalBudget.checkIfUserIsLoggedIn())) {
             choice = AuxiliaryMethods::selectAnOptionFromTheMainMenu();
@@ -63,11 +61,10 @@ int main() {
                 personalBudget.changePasswordOfLoggedInUser();
                 break;
             case '7':
-                //wylogujUzytkownika();
+                personalBudget.logout();
                 break;
             }
         }
     }
-
     return 0;
 }

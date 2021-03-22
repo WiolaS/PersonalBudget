@@ -1,7 +1,6 @@
 #ifndef CASHFLOW_H
 #define CASHFLOW_H
 #include <iostream>
-#include "Date.h"
 
 using namespace std;
 
@@ -11,10 +10,6 @@ class CashFlow {
     string date;
     string item;
     float amount;
-
-    //vector <Date> dates;  // is it necessary?
-
-
 
 public:
     CashFlow(int cashFlowId = 0, int userId = 0, string date = "", string item = "", float amount = 0) {

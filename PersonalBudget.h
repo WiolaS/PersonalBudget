@@ -11,8 +11,8 @@ class PersonalBudget {
 
     UserManager userManager;
     CashFlowManager *cashFlowManager;
-    IncomeFile incomeFile;   // or change to textFile?
-    ExpenseFile expenseFile;   // or change to textFile?
+    IncomeFile incomeFile;
+    ExpenseFile expenseFile;
 
 public:
     PersonalBudget(string userFileName, string incomeFileName, string expenseFileName): userManager(userFileName), incomeFile (incomeFileName), expenseFile (expenseFileName){
@@ -25,18 +25,17 @@ public:
     }
 
     void registerUser();
-    int login();
+    void login();
     vector <User> loadUsersFromFile();
     void changePasswordOfLoggedInUser();
-
     int getIdOfLoggedInUser();
     bool checkIfUserIsLoggedIn();
+    void logout();
     void addIncome();
     void addExpense();
     void showTheBalanceSheetOfTheCurrentMonth();
-    float showTheBalanceSheetOfThePrevoiusMonth();
+    void showTheBalanceSheetOfThePrevoiusMonth();
     void showTheBalanceSheetOfTheSelectedPeriod();
-
 
 };
 

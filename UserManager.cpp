@@ -73,7 +73,8 @@ int UserManager::login() {
 
                 if (users[i].getPassword() == password) {
                     loggedInUserId = users[i].getUserId();
-                    cout << endl << "Hello "<< users[i].getName() << "! You are logged in." << endl << endl;
+                    system("cls");
+                    cout << "Hello "<< users[i].getName() << "! You are logged in." << endl << endl;
 
                     return loggedInUserId;
                 }

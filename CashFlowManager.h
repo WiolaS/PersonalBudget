@@ -3,22 +3,41 @@
 #include <iostream>
 #include <vector>
 #include "CashFlow.h"
-//#include "Date.h"  // it is included in CashFlow.h
 #include "IncomeFile.h"
 #include "ExpenseFile.h"
+#include "DateManager.h"
 #include <windows.h>
 #include <sstream>
+#include <string>
 
 using namespace std;
 
 class CashFlowManager {
 
     const int LOGGED_IN_USER_ID;
-    vector <Date> dates;
     vector <CashFlow> incomes;
     vector <CashFlow> expenses;
     IncomeFile incomeFile;
     ExpenseFile expenseFile;
+    DateManager dateManager;
+
+    CashFlow addCashFlow (string typeOfCashFlow);
+    void setACashFlowDate ();
+    Date splitTheDateFromTheStringIntoIndividualElements (string dateEnteredByTheUser);
+    string setTheDateOfTheCashFlow (string typeOfCashFlow);
+    Date getDateFromTheSystem ();
+    string enterTheNewDate (Date currentDate);
+    string enterTheItemOfCashFlow ();
+    float enterTheAmountOfCashFlow ();
+    void sortIncomesByDate();
+    void sortExpensesByDate();
+    bool checkIfThisCashFlowBelongsToTheLoggedInUser (int userID);
+    float calculateTheSumOfIncomesForTheCurrentMonth();
+    float calculateTheSumOfExpensesForTheCurrentMonth();
+    float calculateTheSumOfIncomesForThePreviousMonth();
+    float calculateTheSumOfExpensesForThePreviousMonth();
+    float calculateTheSumOfIncomesForTheSelectedPeriod(Date startDate, Date endDate);
+    float calculateTheSumOfExpensesForTheSelectedPeriod(Date startDate, Date endDate);
 
 
 public:
@@ -30,37 +49,14 @@ public:
 
     int addIncome ();
     int addExpense ();
-    void setACashFlowDate ();
-    string replaceDateElementsWithASingleString (Date date);
-    Date splitTheDateFromTheStringIntoIndividualElements (string dateEnteredByTheUser);
-    string combineDateElementsIntoAString (int year, int month, int day);
-    string setTheDateOfTheCashFlow ();
-    Date getDateFromTheSystem ();
-    string enterTheNewDate (Date currentDate);
-    bool checkIfTheYearIsALeapYear (int year);
-    int checkHowManyDaysAMonthHas (int month, int year);
-    bool checkTheCorrectnesOfTheEnteredDate (Date dateEnteredByTheUser, Date currentDate) ;
-    bool checkIfTheYearNumberIsCorrect (Date dateEnteredByTheUser, Date currentDate);
-    bool checkIfTheDayNumberIsCorrect (Date dateEnteredByTheUser, Date currentDate);
-    bool checkIfTheMonthNumberWithTheDayNumberAreCorrect (Date dateEnteredByTheUser, Date currentDate);
-    string enterTheItemOfCashFlow ();
-    float enterTheAmountOfCashFlow ();
-    CashFlow addCashFlow ();
-    float calculateTheSumOfIncomesForThePreviousMonth();
-    float calculateTheSumOfExpensesForThePreviousMonth();
-    float showTheBalanceSheetOfThePrevoiusMonth();
-    float calculateTheSumOfIncomesForTheCurrentMonth();
-    float calculateTheSumOfExpensesForTheCurrentMonth();
+    void showTheTotalAmountOfCashFlows (float sumOfIncomes, float sumOfExpenses);
     void showTheBalanceSheetOfTheCurrentMonth();
-    float calculateTheSumOfIncomesForTheSelectedPeriod();
-    float calculateTheSumOfExpensesForTheSelectedPeriod(Date startDate, Date endDate);
+    void showTheBalanceSheetOfThePrevoiusMonth();
     void showTheBalanceSheetOfTheSelectedPeriod();
-
-    //void selectIncomesFromThePreviousMonth ();
-
-
 };
 
 #endif // CASHFLOWMANAGER
+
+
 
 
