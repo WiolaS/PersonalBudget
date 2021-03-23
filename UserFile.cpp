@@ -28,10 +28,10 @@ void UserFile::addUserToFile(User user) {
         xml.AddElem( "password", user.getPassword());
         xml.AddElem( "name", user.getName());
         xml.AddElem( "surname", user.getSurname());
-        xml.Save("C:\\Users\\wiole\\Desktop\\GitHub_nauka\\PersonalBudgetWiola\\users.xml");
+        xml.Save("users.xm");
         xml.OutOfElem(); // back out level
     } else {
-        bool bSuccess = xml.Load( "C:\\Users\\wiole\\Desktop\\GitHub_nauka\\PersonalBudgetWiola\\users.xml" );
+        bool bSuccess = xml.Load("users.xml");
         xml.ResetPos(); // top of document
         xml.FindElem(); // users element is root
         xml.IntoElem(); // inside users
@@ -46,7 +46,7 @@ void UserFile::addUserToFile(User user) {
                 xml.AddElem( "name", user.getName());
                 xml.AddElem( "surname", user.getSurname());
 
-                xml.Save("C:\\Users\\wiole\\Desktop\\GitHub_nauka\\PersonalBudgetWiola\\users.xml");
+                xml.Save("users.xml");
                 xml.OutOfElem(); // back out level
             }
         }
@@ -58,7 +58,7 @@ vector <User> UserFile::loadUsersFromFile() {
     vector <User> users;
 
     CMarkup xml;
-    bool bSuccess = xml.Load( "C:\\Users\\wiole\\Desktop\\GitHub_nauka\\PersonalBudgetWiola\\users.xml" );
+    bool bSuccess = xml.Load("users.xml");
     xml.ResetPos(); // top of document
     xml.FindElem(); // users element is root
     xml.IntoElem(); // inside users
@@ -90,7 +90,7 @@ void UserFile::saveNewPasswordToFile(User user) {
     string strUserId = AuxiliaryMethods::convertIntToString(user.getUserId());
     CMarkup xml;
 
-    bool bSuccess = xml.Load( "C:\\Users\\wiole\\Desktop\\GitHub_nauka\\PersonalBudgetWiola\\users.xml" );
+    bool bSuccess = xml.Load("users.xml");
     xml.ResetPos(); // top of document
     xml.FindElem(); // users element is root
     xml.IntoElem(); // inside users
@@ -102,7 +102,7 @@ void UserFile::saveNewPasswordToFile(User user) {
             }
         }
     }
-    xml.Save("C:\\Users\\wiole\\Desktop\\GitHub_nauka\\PersonalBudgetWiola\\users.xml");
+    xml.Save("users.xml");
     xml.OutOfElem(); // back out level
 }
 
