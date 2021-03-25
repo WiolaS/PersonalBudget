@@ -22,7 +22,7 @@ void IncomeFile::addIncomeToFile(CashFlow income) {
     if (numberOfIncomes == 0) {
         xml.AddElem("incomes");
         xml.IntoElem();
-        xml.AddElem("incomeId", numberOfIncomes + 1);  ///check
+        xml.AddElem("incomeId", numberOfIncomes + 1);
         xml.AddElem( "userId", income.getUserId());
         xml.AddElem( "date", income.getDate());
         xml.AddElem( "item", income.getItem());

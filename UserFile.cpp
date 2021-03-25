@@ -23,15 +23,15 @@ void UserFile::addUserToFile(User user) {
     if (numberOfLoadedUsers == 0) {
         xml.AddElem("users");
         xml.IntoElem();
-        xml.AddElem("userId", numberOfUsers + 1);  ///check
+        xml.AddElem("userId", numberOfUsers + 1);
         xml.AddElem( "login", user.getLogin());
         xml.AddElem( "password", user.getPassword());
         xml.AddElem( "name", user.getName());
         xml.AddElem( "surname", user.getSurname());
-        xml.Save("users.xm");
+        xml.Save("users.xml");
         xml.OutOfElem(); // back out level
     } else {
-        bool bSuccess = xml.Load("users.xml");
+        bool bSuccess = xml.Load( "users.xml" );
         xml.ResetPos(); // top of document
         xml.FindElem(); // users element is root
         xml.IntoElem(); // inside users
@@ -51,6 +51,7 @@ void UserFile::addUserToFile(User user) {
             }
         }
     }
+    setNumberOfLoadedUsers(numberOfUsers + 1);
 }
 
 vector <User> UserFile::loadUsersFromFile() {
@@ -58,7 +59,7 @@ vector <User> UserFile::loadUsersFromFile() {
     vector <User> users;
 
     CMarkup xml;
-    bool bSuccess = xml.Load("users.xml");
+    bool bSuccess = xml.Load( "users.xml" );
     xml.ResetPos(); // top of document
     xml.FindElem(); // users element is root
     xml.IntoElem(); // inside users
@@ -90,7 +91,7 @@ void UserFile::saveNewPasswordToFile(User user) {
     string strUserId = AuxiliaryMethods::convertIntToString(user.getUserId());
     CMarkup xml;
 
-    bool bSuccess = xml.Load("users.xml");
+    bool bSuccess = xml.Load( "users.xml" );
     xml.ResetPos(); // top of document
     xml.FindElem(); // users element is root
     xml.IntoElem(); // inside users

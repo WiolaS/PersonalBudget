@@ -22,7 +22,7 @@ void ExpenseFile::addExpenseToFile(CashFlow expense) {
     if (numberOfExpenses == 0) {
         xml.AddElem("expenses");
         xml.IntoElem();
-        xml.AddElem("expenseId", numberOfExpenses + 1);  ///check
+        xml.AddElem("expenseId", numberOfExpenses + 1);
         xml.AddElem( "userId", expense.getUserId());
         xml.AddElem( "date", expense.getDate());
         xml.AddElem( "item", expense.getItem());
