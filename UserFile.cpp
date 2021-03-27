@@ -15,7 +15,7 @@ int UserFile::getNumberOfLoadedUsers() {
 
 void UserFile::addUserToFile(User user) {
     int numberOfUsers = getNumberOfLoadedUsers();
-    string strNumberOfUsers = AuxiliaryMethods::convertIntToString(numberOfUsers);
+    string strNumberOfUsers = to_string(numberOfUsers);
     int numberOfParameters = 5;
 
     CMarkup xml;
@@ -65,8 +65,8 @@ vector <User> UserFile::loadUsersFromFile() {
     xml.IntoElem(); // inside users
 
     while ( xml.FindElem("userId") ) {
-        setNumberOfLoadedUsers(AuxiliaryMethods::convertStringToInt(xml.GetData()));
-        user.setUserId(AuxiliaryMethods::convertStringToInt(xml.GetData()));
+        setNumberOfLoadedUsers(atoi(xml.GetData().c_str()));
+        user.setUserId(atoi(xml.GetData().c_str()));
 
         xml.FindElem("login");
         user.setLogin(xml.GetData());
@@ -88,7 +88,7 @@ vector <User> UserFile::loadUsersFromFile() {
 
 void UserFile::saveNewPasswordToFile(User user) {
 
-    string strUserId = AuxiliaryMethods::convertIntToString(user.getUserId());
+    string strUserId = to_string(user.getUserId());
     CMarkup xml;
 
     bool bSuccess = xml.Load( "users.xml" );

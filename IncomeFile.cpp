@@ -15,7 +15,7 @@ int IncomeFile::getNumberOfLoadedIncomes() {
 
 void IncomeFile::addIncomeToFile(CashFlow income) {
     int numberOfIncomes = getNumberOfLoadedIncomes();
-    string strNumberOfIncomes = AuxiliaryMethods::convertIntToString(numberOfIncomes);
+    string strNumberOfIncomes = to_string(numberOfIncomes);
     int numberOfParameters = 5;
 
     CMarkup xml;
@@ -64,11 +64,11 @@ vector <CashFlow> IncomeFile::loadIncomesOfTheLoggedinUserFromTheFile(int logedI
     xml.IntoElem(); // inside users
 
     while ( xml.FindElem("incomeId") ) {
-        setNumberOfLoadedIncomes(AuxiliaryMethods::convertStringToInt(xml.GetData()));
-        income.setCashFlowId(AuxiliaryMethods::convertStringToInt(xml.GetData()));
+        setNumberOfLoadedIncomes(atoi(xml.GetData().c_str()));
+        income.setCashFlowId(atoi(xml.GetData().c_str()));
 
         xml.FindElem("userId");
-        income.setUserId(AuxiliaryMethods::convertStringToInt(xml.GetData()));
+        income.setUserId(atoi(xml.GetData().c_str()));
 
         xml.FindElem("date");
         income.setDate(xml.GetData());
@@ -77,7 +77,7 @@ vector <CashFlow> IncomeFile::loadIncomesOfTheLoggedinUserFromTheFile(int logedI
         income.setItem(xml.GetData());
 
         xml.FindElem("amount");
-        income.setAmount(AuxiliaryMethods::convertStringToFloat(xml.GetData()));
+        income.setAmount(atoi(xml.GetData().c_str()));
 
         incomes.push_back(income);
     }

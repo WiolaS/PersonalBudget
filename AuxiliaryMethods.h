@@ -8,9 +8,6 @@ using namespace std;
 class AuxiliaryMethods {
 
 public:
-    static string convertIntToString(int number);
-    static int convertStringToInt(string number);
-    static float convertStringToFloat(string number);
     static string convertFloatToStringAndSetPrecisionToTwoDecimalPlaces (float amount);
     static string loadLine();
     static string replaceCommaWithDot();

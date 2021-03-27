@@ -8,16 +8,16 @@ Date CashFlowManager::getDateFromTheSystem() {
     return dateManager.getDateFromTheSystem();
 }
 
-Date CashFlowManager::splitTheDateFromTheStringIntoIndividualElements (string dateEnteredByTheUser) {
+Date CashFlowManager::splitTheDateFromTheStringIntoIndividualElements(string dateEnteredByTheUser) {
     return dateManager.splitTheDateFromTheStringIntoIndividualElements(dateEnteredByTheUser);
 }
 
-string CashFlowManager::enterTheNewDate (Date currentDate) {
-    return dateManager.enterTheNewDate (currentDate);
+string CashFlowManager::enterTheNewDate(Date currentDate) {
+    return dateManager.enterTheNewDate(currentDate);
 }
 
-string CashFlowManager::setTheDateOfTheCashFlow (string typeOfCashFlow) {
-    return dateManager.setTheDateOfTheCashFlow (typeOfCashFlow);
+string CashFlowManager::setTheDateOfTheCashFlow(string typeOfCashFlow) {
+    return dateManager.setTheDateOfTheCashFlow(typeOfCashFlow);
 }
 
 string CashFlowManager::enterTheItemOfCashFlow() {
@@ -42,9 +42,9 @@ float CashFlowManager::enterTheAmountOfCashFlow() {
     } else {
         decimalAmountSeparatedByADot = AuxiliaryMethods::checkIfThereIsAComma(enteredAmountInStringFormat);
     }
-    amountOfCashFlowInNumberFormat = AuxiliaryMethods::convertStringToFloat(decimalAmountSeparatedByADot);
+    amountOfCashFlowInNumberFormat = atof(decimalAmountSeparatedByADot.c_str());
     correctedAmountToTwoDecimalPlaces = AuxiliaryMethods::convertFloatToStringAndSetPrecisionToTwoDecimalPlaces(amountOfCashFlowInNumberFormat);
-    amountOfCashFlowInNumberFormat = AuxiliaryMethods::convertStringToFloat(correctedAmountToTwoDecimalPlaces);
+    amountOfCashFlowInNumberFormat = atof(correctedAmountToTwoDecimalPlaces.c_str());
 
     return amountOfCashFlowInNumberFormat;
 }

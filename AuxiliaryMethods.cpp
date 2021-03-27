@@ -8,35 +8,11 @@
 
 using namespace std;
 
-static string convertIntToString(int number);
-static int convertStringToInt(string number);
-
-string AuxiliaryMethods::convertIntToString(int number) {
-    ostringstream ss;
-    ss << number;
-    string str = ss.str();
-    return str;
-}
-
-int AuxiliaryMethods::convertStringToInt(string number) {
-    int numberInt;
-    istringstream iss(number);
-    iss >> numberInt;
-    return numberInt;
-}
-
 string AuxiliaryMethods::convertFloatToStringAndSetPrecisionToTwoDecimalPlaces (float amount) {
     stringstream ss;
     ss << fixed << setprecision(2) << amount;
     string correctedStringAmount = ss.str();
     return correctedStringAmount;
-}
-
-float AuxiliaryMethods::convertStringToFloat(string number) {
-    float numberFloat;
-    istringstream iss(number);
-    iss >> numberFloat;
-    return numberFloat;
 }
 
 string AuxiliaryMethods::loadLine() {

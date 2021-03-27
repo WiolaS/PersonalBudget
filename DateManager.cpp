@@ -16,15 +16,15 @@ Date DateManager::getDateFromTheSystem() {
 
 string DateManager::combineDateElementsIntoAString(int year, int month, int day) {
     string stdate = "";
-    string stYear = AuxiliaryMethods::convertIntToString (year);
-    string stMonth = AuxiliaryMethods::convertIntToString (month);
-    string stDay = AuxiliaryMethods::convertIntToString (day);
+    string stYear = to_string(year);
+    string stMonth = to_string(month);
+    string stDay = to_string(day);
 
     if (month < 10) {
-        stMonth = "0" + AuxiliaryMethods::convertIntToString (month);
+        stMonth = "0" + to_string(month);
     }
     if (day < 10) {
-        stDay = "0" + AuxiliaryMethods::convertIntToString (day);
+        stDay = "0" + to_string(day);
     }
     stdate = stYear + "-" + stMonth + "-" + stDay;
     return stdate;

@@ -15,7 +15,7 @@ int ExpenseFile::getNumberOfLoadedExpenses() {
 
 void ExpenseFile::addExpenseToFile(CashFlow expense) {
     int numberOfExpenses = getNumberOfLoadedExpenses();
-    string numberOfExpensesInStringFormat = AuxiliaryMethods::convertIntToString(numberOfExpenses);
+    string numberOfExpensesInStringFormat = to_string(numberOfExpenses);
     int numberOfParameters = 5;
 
     CMarkup xml;
@@ -64,11 +64,11 @@ vector <CashFlow> ExpenseFile::loadExpensesOfTheLoggedinUserFromTheFile(int loge
     xml.IntoElem(); // inside users
 
     while ( xml.FindElem("expenseId") ) {
-        setNumberOfLoadedExpenses(AuxiliaryMethods::convertStringToInt(xml.GetData()));
-        expense.setCashFlowId(AuxiliaryMethods::convertStringToInt(xml.GetData()));
+        setNumberOfLoadedExpenses(atoi(xml.GetData().c_str()));
+        expense.setCashFlowId(atoi(xml.GetData().c_str()));
 
         xml.FindElem("userId");
-        expense.setUserId(AuxiliaryMethods::convertStringToInt(xml.GetData()));
+        expense.setUserId(atoi(xml.GetData().c_str()));
 
         xml.FindElem("date");
         expense.setDate(xml.GetData());
@@ -77,7 +77,7 @@ vector <CashFlow> ExpenseFile::loadExpensesOfTheLoggedinUserFromTheFile(int loge
         expense.setItem(xml.GetData());
 
         xml.FindElem("amount");
-        expense.setAmount(AuxiliaryMethods::convertStringToFloat(xml.GetData()));
+        expense.setAmount(atoi(xml.GetData().c_str()));
 
         expenses.push_back(expense);
     }
