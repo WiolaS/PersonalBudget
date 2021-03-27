@@ -105,10 +105,7 @@ string DateManager::enterTheNewDate (Date currentDate) {
 }
 
 bool DateManager::checkIfTheYearIsALeapYear (int year) {
-    if (year % 4 == 0)
-        return true;
-    else
-        return false;
+    return (year % 4 == 0);
 }
 
 int DateManager::checkHowManyDaysAMonthHas (int month, int year) {
@@ -128,29 +125,16 @@ int DateManager::checkHowManyDaysAMonthHas (int month, int year) {
 }
 
 bool DateManager::checkTheCorrectnesOfTheEnteredDate (Date dateEnteredByTheUser, Date currentDate) {
-    if(checkIfTheYearNumberIsCorrect(dateEnteredByTheUser, currentDate) == true) {
-        if(checkIfTheMonthNumberWithTheDayNumberAreCorrect(dateEnteredByTheUser, currentDate) == true)
-            return true;
-        else {
-            return false;
-        }
-    } else
-        return false;
+    return (checkIfTheYearNumberIsCorrect(dateEnteredByTheUser, currentDate) == true) ?
+    (checkIfTheMonthNumberWithTheDayNumberAreCorrect(dateEnteredByTheUser, currentDate) == true) : false;
 }
 
 bool DateManager::checkIfTheYearNumberIsCorrect (Date dateEnteredByTheUser, Date currentDate) {
-
-    if(dateEnteredByTheUser.getYear() >= 2000 && dateEnteredByTheUser.getYear() <= currentDate.getYear()) {
-        return true;
-    } else
-        return false;
+    return (dateEnteredByTheUser.getYear() >= 2000 && dateEnteredByTheUser.getYear() <= currentDate.getYear());
 }
 
 bool DateManager::checkIfTheDayNumberIsCorrect (Date dateEnteredByTheUser, Date currentDate) {
-    if (dateEnteredByTheUser.getDay() >= 1 && dateEnteredByTheUser.getDay() <= checkHowManyDaysAMonthHas (dateEnteredByTheUser.getMonth(), dateEnteredByTheUser.getYear()))
-        return true;
-    else
-        return false;
+    return (dateEnteredByTheUser.getDay() >= 1 && dateEnteredByTheUser.getDay() <= checkHowManyDaysAMonthHas (dateEnteredByTheUser.getMonth(), dateEnteredByTheUser.getYear()));
 }
 
 bool DateManager::checkIfTheMonthNumberWithTheDayNumberAreCorrect (Date dateEnteredByTheUser, Date currentDate) {
@@ -158,21 +142,12 @@ bool DateManager::checkIfTheMonthNumberWithTheDayNumberAreCorrect (Date dateEnte
     int numberOfTheLastMonthOfTheYear = 12;
 
     if (dateEnteredByTheUser.getYear() == currentDate.getYear()) {
-        if(dateEnteredByTheUser.getMonth() >= numberOfTheFirstMonthOfTheYear && dateEnteredByTheUser.getMonth() <= currentDate.getMonth()) {
-            if (checkIfTheDayNumberIsCorrect(dateEnteredByTheUser, currentDate))
-                return true;
-            else
-                return false;
-        } else
-            return false;
+        return (dateEnteredByTheUser.getMonth() >= numberOfTheFirstMonthOfTheYear && dateEnteredByTheUser.getMonth() <= currentDate.getMonth()) ?
+         (checkIfTheDayNumberIsCorrect(dateEnteredByTheUser, currentDate)) : false;
+
     } else {
-        if  (dateEnteredByTheUser.getMonth() >= numberOfTheFirstMonthOfTheYear && dateEnteredByTheUser.getMonth() <= numberOfTheLastMonthOfTheYear) {
-            if (checkIfTheDayNumberIsCorrect(dateEnteredByTheUser, currentDate))
-                return true;
-            else
-                return false;
-        } else
-            return false;
+        return (dateEnteredByTheUser.getMonth() >= numberOfTheFirstMonthOfTheYear && dateEnteredByTheUser.getMonth() <= numberOfTheLastMonthOfTheYear) ?
+            (checkIfTheDayNumberIsCorrect(dateEnteredByTheUser, currentDate)) : false;
     }
 }
 

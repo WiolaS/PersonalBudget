@@ -135,10 +135,7 @@ void CashFlowManager::sortExpensesByDate() {
 }
 
 bool CashFlowManager::checkIfThisCashFlowBelongsToTheLoggedInUser (int userID) {
-    if (userID == LOGGED_IN_USER_ID)
-        return true;
-    else
-        return false;
+    return (userID == LOGGED_IN_USER_ID);
 }
 
 
